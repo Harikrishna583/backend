@@ -533,8 +533,11 @@ app.get('/all_messages_notification_count', authenticate, async (req, res) => {
 //   console.log(`Server running on port ${PORT}`);
 // });
 
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on port ${PORT}`);
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
 });
+
+
+
