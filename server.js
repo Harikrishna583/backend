@@ -206,6 +206,21 @@ const authenticate = (req, res, next) => {
   }
 };
 
+
+app.get("/",(req,res)=>{
+  res.send(`This is an backend server workking port number: ${process.env.PORT}`);
+  console.log("node ls working console message");
+});
+
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok", port: process.env.PORT });
+});
+
+
+
+
+
+
 // File upload route
 app.post('/upload', authenticate, upload.single('file'), (req, res) => {
   if (!req.file) {
