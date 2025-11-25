@@ -99,10 +99,18 @@ const server = http.createServer(app);
 //   },
 // });
 
+// const io = new Server(server, {
+//   cors: {
+//     origin: "https://thinkfitsolutions.com", // same as frontend domain
+//     methods: ["GET", "POST"],
+//     credentials: true,
+//   },
+// });
+
 const io = new Server(server, {
   cors: {
-    origin: "https://thinkfitsolutions.com", // same as frontend domain
-    methods: ["GET", "POST"],
+    origin: ["https://thinkfitsolutions.com", "http://thinkfitsolutions.com"], // allow both
+    methods: ["GET", "POST", "OPTIONS"],
     credentials: true,
   },
 });
@@ -115,8 +123,14 @@ const io = new Server(server, {
 // }));
 
 
+// app.use(cors({
+//   origin: "https://thinkfitsolutions.com", // your frontend domain
+//   credentials: true
+// }));
+
 app.use(cors({
-  origin: "https://thinkfitsolutions.com", // your frontend domain
+  origin: ["https://thinkfitsolutions.com", "http://thinkfitsolutions.com"],
+  methods: ["GET", "POST", "OPTIONS"],
   credentials: true
 }));
 
