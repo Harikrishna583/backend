@@ -18,3 +18,7 @@ EXPOSE 5000
 
 # Start the app
 CMD ["node", "server.js"]
+
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s \
+  CMD curl -f http://localhost:5000/health || exit 1
