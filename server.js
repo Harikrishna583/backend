@@ -587,7 +587,12 @@ app.get('/all_messages_notification_count', authenticate, async (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 const HOST = '0.0.0.0';  // important
-app.listen(PORT, HOST, () => {
+// app.listen(PORT, HOST, () => {
+//   console.log(`Server running on ${HOST}:${PORT}`);
+// });
+
+
+server.listen(PORT, HOST, () => {
   console.log(`Server running on ${HOST}:${PORT}`);
 });
 
