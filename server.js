@@ -91,6 +91,25 @@ const DashboardCard = require('./routes/dashboard/DashboardCard.js');
 const app = express();
 app.set('trust proxy', true);
 const server = http.createServer(app);
+
+
+
+
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+});
+
+
+
+
+
+
+
+
 // const io = new Server(server, {
 //   cors: {
 //     origin: 'http://localhost:3000',
@@ -115,8 +134,16 @@ const server = http.createServer(app);
 //   },
 // });
 
+// app.use(cors({
+//   origin: ["*", "https://thinkfitsolutions.com", "http://thinkfitsolutions.com"],
+//   methods: ["GET", "POST", "OPTIONS"],
+//   credentials: true
+// }));
+
+
+
 app.use(cors({
-  origin: ["*", "https://thinkfitsolutions.com", "http://thinkfitsolutions.com"],
+  origin: "*",
   methods: ["GET", "POST", "OPTIONS"],
   credentials: true
 }));
@@ -136,11 +163,11 @@ app.use(cors({
 //   credentials: true
 // }));
 
-app.use(cors({
-  origin: ["https://thinkfitsolutions.com", "http://thinkfitsolutions.com"],
-  methods: ["GET", "POST", "OPTIONS"],
-  credentials: true
-}));
+// app.use(cors({
+//   origin: ["https://thinkfitsolutions.com", "http://thinkfitsolutions.com"],
+//   methods: ["GET", "POST", "OPTIONS"],
+//   credentials: true
+// }));
 
 
 app.use(express.json());
