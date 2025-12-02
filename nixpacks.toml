@@ -4,5 +4,8 @@ nixPkgs = ["nodejs"]
 [phases.install]
 cmds = ["npm install"]
 
+[phases.build]
+cmds = []   # No build step for backend
+
 [start]
-cmd = "npm start"
+cmd = "node server.js"
