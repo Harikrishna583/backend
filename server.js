@@ -107,13 +107,21 @@ const server = http.createServer(app);
 //   },
 // });
 
-const io = new Server(server, {
-  cors: {
-    origin: ["https://thinkfitsolutions.com", "http://thinkfitsolutions.com"], // allow both
-    methods: ["GET", "POST", "OPTIONS"],
-    credentials: true,
-  },
-});
+// const io = new Server(server, {
+//   cors: {
+//     origin: *, // allow both
+//     methods: ["GET", "POST", "OPTIONS"],
+//     credentials: true,
+//   },
+// });
+
+app.use(cors({
+  origin: ["*", "https://thinkfitsolutions.com", "http://thinkfitsolutions.com"],
+  methods: ["GET", "POST", "OPTIONS"],
+  credentials: true
+}));
+
+
 
 
 // Middleware
