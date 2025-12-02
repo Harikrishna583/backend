@@ -4,21 +4,24 @@ FROM node:20-alpine
 # Set working directory
 WORKDIR /app
 
-# Copy package files first for caching
+# Copy package files first (better cache)
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install --production
+RUN npm install
 
-# Copy all source files
+# Copy all source code
 COPY . .
 
-# Expose backend port (should match process.env.PORT)
+# Expose backend port (Coolify will map automatically)
 EXPOSE 5000
 
-# Start the app
-CMD ["node", "server.js"]
+# Add curl for healthcheck (alpine does not have curl)
+RUN apk add --no-cache curl
 
-
+# Healthcheck
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s \
   CMD curl -f http://localhost:5000/health || exit 1
+
+# Start server
+CMD ["node", "server.js"]
